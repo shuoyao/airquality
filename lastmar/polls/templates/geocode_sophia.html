@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #output {
+        margin: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <input id="zipcode" type="textbox" value="zipcode">
+      <input id="submit" type="button" value="Find your place">
+
+      <p>
+      <input id="closest" type="textbox" value="closest site">
+      <input id="closest_lat" type="textbox" value="closest site lat">
+      <input id="closest_lon" type="textbox" value="closest site lon">
+      <input id="closest_zip" type="textbox" value="closest site zipcode">
+      <input id="closest_data" type="textbox" value="closest site data">
+      </p>
+
+      <input id="compared" type="textbox" value="compared within states">
+
+    </div>
+    <p id="output"></p>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD8tHFDvOE5REy17jBFLB3CJm-wtPdoow&callback=initializeTransfer">
+    </script>
+
+    <script type="text/javascript" src="Desktop/urapall/squel.min.js"></script>
+
+    <script>
+      //  require to access the squel API
+      var squel = require("squel");
+      function initializeTransfer() {
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          zipcodeSwitch(geocoder);
+        });
+      }
+
+      function zipcodeSwitch(geocoder) {
+        var lat = '';
+        var lng = '';
+      
+        var zipcode = document.getElementById('zipcode').value;
+        geocoder.geocode( { 'address': zipcode}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            //this is the latitude variable
+            lat = results[0].geometry.location.lat();
+            //this is the longitude variable
+            lng = results[0].geometry.location.lng();
+            document.getElementById('output').innerHTML = 'latitude: ' + lat + '\n longitude: ' + lng;
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+
+        // now use the lat and lng to find nearest 1 site(ns)
+        // get the nearest 1 site's from db: lat, lon, pm2.5, and state
+        // display nearest site's lat and long
+        // get the avg and sd of all sites from db, compare with ns, avg +- 1sd 
+        // display above/below/about avg
+
+        
+        insert t2
+        select (lat - t.lat) from t 
+
+        squel.select()
+          .from("table", "t1")
+          .field("t1.siteid")
+          .field("t1.lat")
+          .field("t1.lon")
+          .field("t1.zip")
+          .field("t2.lat")
+          .left_join("table", "t2", "t1.siteid = t2.siteid")
+          .where("t2.lat <> 'Mark'")
+          .toString()
+
+        var s = squel.select();
+        s.from("student");
+        log( s.toString() );  
+        document.getElementById('closest_lat').innerHTML = clat;
+        document.getElementById('closest_lon').innerHTML = clon;
+       
+    }
+  </script>
+   
+  </body>
+</html>
