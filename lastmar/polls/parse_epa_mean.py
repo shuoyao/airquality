@@ -1,6 +1,5 @@
 import csv
 import datetime
-from statistics import stdev
 from math import cos, asin, sqrt
 
 def getStateAverageData(input_file, output_file, output_file2):
@@ -82,7 +81,7 @@ def mostRecentReading(lat, lon, input_file='recent_readings.csv'):
 		return closest_reading
 
 # getStateAverageData('daily_88502_2015.csv', 'state_avgs.csv', 'recent_readings.csv')
-# print(mostRecentReading(46, -84))
+print(mostRecentReading(37.8637376, -122.2682245))
 # print(mostRecentReading(54, 92))
 # print(mostRecentReading(6, -4))
 # print(mostRecentReading(92, 45))
