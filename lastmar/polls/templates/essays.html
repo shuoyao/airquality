@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--     {% include 'meta.html' %} -->
+    <body id="top">
+
+
+        <!-- start preloader -->
+        <div class="preloader">
+            <div class="sk-spinner sk-spinner-wave">
+                <div class="sk-rect1"></div>
+                <div class="sk-rect2"></div>
+                <div class="sk-rect3"></div>
+                <div class="sk-rect4"></div>
+                <div class="sk-rect5"></div>
+            </div>
+        </div>
+        <!-- end preloader -->
+
+        <!-- start navigation -->
+        <div class="navbar navbar-default">
+            <div class="navcontainer">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon icon-bar"></span>
+                        <span class="icon icon-bar"></span>
+                        <span class="icon icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand"></a>
+                    <a href="/" class="navbar-brand">Veritas China</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/accounts/register">Veritas 2016</a></li>
+                        <li><a href="/year2015">往年回顾</a></li>
+                        <li><a href="/contact">联系我们</a></li>
+                        <li><a href="/blog-main">Veritas Blog</a></li>
+                        <!-- <li><a href="/2016-facilitators">讲师目录</a></li> -->
+                        <!-- <li><a href="/2016-speakers">客座嘉宾</a></li> -->
+                        <!-- <li><a href="/2016-courses">课程简介</a></li> -->
+                        {% if user.is_authenticated %}
+                        <li><a href="/accounts/dashboard">{{user.get_username}}</a></li>
+                        <li><a href="/accounts/logout">登出</a></li>
+                        {% else %}                        
+                        <li><a href="/accounts/login">学员登录</a></li>
+                        {% endif %}
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end navigation -->
+
+	<!-- start contact -->
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">申请<span>文书</span></h2>
+                    </div>
+                    <div class="col-md-2 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        
+
+                        <div class="col-md-8 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+
+                            <label for="id_e1">请列出三个你所参加过的课外活动:</label>
+                            <textarea cols="40" id="id_e1" name="e1" rows="10" class="form-control">
+                            </textarea>
+                            <label for="id_e2">请描述你目前生命中印象你最深刻的一件事或者一个人（中文作答，1000字以内）:</label>
+                            <textarea cols="40" id="id_e2" name="e2" rows="10" class="form-control">
+                            </textarea>
+                            <label for="id_e3">二选一：<br>如果让你做一场梦，你会如何设计情节？（选作，字数不限）<br> “Tell us who is your hero in your heart. What would you do if you are going to spend a day with him/her”:</label>
+                            <textarea cols="40" id="id_e3" name="e3" rows="10" class="form-control">
+                            </textarea>
+                            <label for="id_sub">我确定将此份文书作为我的申请文书:</label>
+                            <input checked="checked" id="id_sub" name="sub" type="checkbox" class="form-control"/>
+
+
+
+
+                                <!-- <label for="id_name">姓名</label>
+                                <input id="id_name" maxlength="20" name="name" type="text" class="form-control">
+
+                                <label for="id_gender">性别</label>
+                                <select id="id_gender" name="gender" class="form-control">
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                    <option value="其他">其他</option>
+                                </select>
+
+                                <label for="id_email">邮箱</label>
+                                <input id="id_email" maxlength="50" name="email" type="email" class="form-control">
+
+                                <label for="id_wechat">微信账号</label>
+                                <input id="id_wechat" maxlength="20" name="wechat" type="text" class="form-control">
+
+                                <label for="id_qq">QQ账号</label>
+                                <input id="id_qq" maxlength="20" name="qq" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+                                <label for="id_city">所在城市</label>
+                                <input id="id_city" maxlength="20" name="city" type="text" class="form-control">
+
+                                <label for="id_school">所在学校</label>
+                                <input id="id_school" maxlength="20" name="school" type="text" class="form-control">
+
+                                <label for="id_grade">所在年级</label> <select id="id_grade" name="grade" class="form-control">
+                                    <option value="高一">高一</option>
+                                    <option value="高二">高二</option>
+                                    <option value="高三">高三</option>
+                                    </select> -->
+                                
+                        </div>
+                        <input type="submit" class="form-control">
+                    </form>
+                    <div class="col-md-2 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- end contact -->
+
+
+	<!-- start copyright -->
+        <footer id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                       	Copyright &copy; 2016 Veritas China</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    <!-- end copyright -->
+
+	</body>
+</html>
