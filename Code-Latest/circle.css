@@ -1,0 +1,114 @@
+.performance-title {
+  background-color: #AEB6BF;
+  font-family: 'Georgia';
+  font-size: 1.3rem;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+  max-width: 1900px;
+  text-align: center;
+}
+
+.circle {
+  float: left;
+}
+
+li a {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: solid 4px #1C86F0;
+  border-radius: 50%;
+  margin-left: 40px;
+  margin-top: 10px;
+  background-color: #1C86F0;
+}
+
+li a.active {
+    background-color: #2730B2;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+}
+
+div.vertical-line{
+  width: 4px; 
+  height: 90px;
+  margin-left: 50px;
+  float: left; 
+  background-color: #1C86F0;
+}
+
+.homepage {
+  float: right;
+  width: 75%;
+  font-size: 17px;
+  color: #f1f1f1;
+  margin-top: 30px;
+  padding: 30px 50px 50px 70px;
+  margin-right: 20px;
+  background-image: url("http://www.pptback.com/uploads/blue-green-gradient-lights-backgrounds-powerpoint.jpg");
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: serif;
+  background-color: #E2E2FD;
+}
+
+#zipcode {
+  float: left;
+  margin-top: 10px;
+  margin-left: 20%;
+  z-index: 5;
+  padding: 4px;
+  background-color: #fff;
+  border: 3px solid #999;
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Georgia';
+  line-height: 30px;
+}
+
+#submit {
+  float: right;
+  margin-top: 30px;
+  margin-right: 20%;
+  background-color: #1C86F0;
+  font-family: "Georgia";
+  font-size: 18px;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 20px 10px 20px;
+  text-align: center;
+}
+
+#fossil-tax {
+  float: left;
+  margin-top: 30px;
+  margin-left: 20%;
+  margin-right: 10%;
+  background-color: #1C86F0;
+  font-family: "Georgia";
+  font-size: 18px;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 20px 10px 20px;
+  text-align: center;
+}
+
+#questionbutton {
+  margin-top: 5px;
+  margin-left: 10%;
+  margin-right: 30%;
+  background-color: #B0B0B0;
+  font-family: "Georgia";
+  font-size: 18px;
+  color: #000;
+  font-weight: 700;
+  padding: 10px 20px 10px 20px;
+  text-align: center;
+  width: 50%;
+}

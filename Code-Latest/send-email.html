@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="circle.css" /> 
+  </head>
+
+  <header role="banner">
+  <div class="performance-title">
+        An official website of air quality performance information
+  </div>
+
+<section>
+  <ul class="circle">
+    <li><a href="Introduction.html"></a></li>
+    <div class="vertical-line"></div>
+    <li><a href="quality-problem.html"></a></li>
+    <div class="vertical-line"></div>
+    <li><a href="zipcode-search.html"></a></li>
+    <div class="vertical-line"></div>
+    <li><a href="display-data.html"></a></li>
+    <div class="vertical-line"></div>
+    <li><a href="questions.html"></a></li>
+    <div class="vertical-line"></div>
+    <li><a href="demographics.html"></a></li>
+    <div class="vertical-line"></div>
+    <li><a class="active" href="send-email.html"></a></li>
+  </ul>
+</section>
+
+
+<section class="homepage">
+  <div id="main-content">
+    <h1>Send email</h1>
+    <h2>Our philosophy is to efficiently help government and industrial customers with the complex array of air quality rules and regulations issued by the local, state, and federal agencies.  From simple permits to complex agency negotiations, from small companies to the largest of California's organizations, we have helped to solve our clients' air quality issues in a cost effective and efficient manner. Please enter your zipcode and check out the air quality performance in your area</h2>
+    <div>
+      <input id="zipcode" type="textbox" value="Enter your zipcode">
+      <input id="submit" type="button" value="Search your area">
+    </div>
+  </div>
+</section>
+
+  </header>
+
+  <body>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD8tHFDvOE5REy17jBFLB3CJm-wtPdoow&callback=initializeTransfer">
+    </script>
+
+    <script>
+      function initializeTransfer() {
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          zipcodeSwitch(geocoder);
+        });
+      }
+
+      function zipcodeSwitch(geocoder) {
+        var lat = '';
+        var lng = '';
+        var zipcode = document.getElementById('zipcode').value;
+        geocoder.geocode( { 'address': zipcode}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            //this is the latitude variable
+            lat = results[0].geometry.location.lat();
+            //this is the longitude variable
+            lng = results[0].geometry.location.lng();
+            document.getElementById('output').innerHTML = 'latitude: ' + lat + '\n longitude: ' + lng;
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+    }
+  </script>
+   
+  </body>
+
+</html>

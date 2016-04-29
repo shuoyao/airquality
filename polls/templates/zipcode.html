@@ -1,0 +1,21 @@
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="circle.css" /> 
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+
+
+
+<h1>Your_lat is: {{ your_lat }}</h1>
+<h1>Your_lat is: {{ your_lon }}</h1>
+<h1>Site_data is: {{ site_data }}</h1>
+
+
+
+<a button type="button" class="btn btn-primary btn-block" href="{% url 'mform' zid=zipcode %}">Next</button></a>
+<!-- 
+<form method="POST"> -->

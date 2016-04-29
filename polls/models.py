@@ -1,20 +1,13 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django import forms
+from django.forms import widgets
+from django.utils import timezone
 
 class mcsv(models.Model):
     col1 = models.CharField(max_length=200)
     col2 = models.CharField(max_length=200)
     col3 = models.CharField(max_length=200)
-   
-# class Question(models.Model):
-#     question_text = models.CharField(max_length=200)
-   
-# class Choice(models.Model):
-#     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-#     c1 = models.CharField(max_length=200)
-#     c2 = models.CharField(max_length=200)
-#     c3 = models.CharField(max_length=200)
-#     sub = models.BooleanField(default = False)
 
 @python_2_unicode_compatible 
 class Survey(models.Model):
@@ -22,24 +15,11 @@ class Survey(models.Model):
     def __str__(self):
         return self.question_text
 
-
    
 @python_2_unicode_compatible
 class Response(models.Model):
     # question = models.ForeignKey(Survey, on_delete=models.CASCADE)
-    zipcode = models.CharField(max_length=5)
 
-    FRESHMAN = 'FR'
-    SOPHOMORE = 'SO'
-    JUNIOR = 'JR'
-    SENIOR = 'SR'
-    # YEAR_IN_SCHOOL_CHOICES = (
-    #     (FRESHMAN, 'Freshman'),
-    #     (SOPHOMORE, 'Sophomore'),
-    #     (JUNIOR, 'Junior'),
-    #     (SENIOR, 'Senior'),
-    # )
-    
     ONE = 1
     TWO = 2
     THREE = 3
@@ -59,8 +39,6 @@ class Response(models.Model):
         (FOUR, '$75,001 - $100,000'),
         (FIVE, 'Above $100,000'),
     )
-
-
 
     EDUCATION_CHOICES = (
         (ONE, 'Not Graduate from High school'),
@@ -84,10 +62,8 @@ class Response(models.Model):
         (FOUR, 'Moderately liberal'),
         (FIVE, 'Very liberal'),
     )
+    zipcode = models.CharField(max_length=5)
 
-    # year_in_school = models.CharField(max_length=2,
-    #                                   choices=YEAR_IN_SCHOOL_CHOICES,
-    #                                   default=FRESHMAN)
     support_or_not = models.IntegerField(max_length=100,
                                       choices=YES_NO_CHOICES,
                                       default=ONE)
@@ -111,9 +87,9 @@ class Response(models.Model):
     politics = models.IntegerField(max_length=200,
                               choices=POLITICS_CHOICES,
                               default=ONE)
-
-
+    created = models.DateTimeField(auto_now_add=True)
+    
     def __str__(self):
-        return str(self.zipcode)
+        return str(self.created)
 
     
