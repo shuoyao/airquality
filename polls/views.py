@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect,HttpResponse
 from django.core.urlresolvers import reverse
 from .models import mcsv,Survey,Response
 from django.core.context_processors import csrf
-import util
+from . import util
 from .forms import NameForm, SurveyForm, ResponseForm
 from django.forms.widgets import HiddenInput
 # def mform(request):

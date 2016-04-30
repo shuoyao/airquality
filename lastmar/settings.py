@@ -50,7 +50,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'questionnaire.request_cache.RequestCacheMiddleware',
+    # 'questionnaire.request_cache.RequestCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'lastmar.urls'
