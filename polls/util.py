@@ -38,8 +38,9 @@ def HaversineDistance(lat1, lon1, lat2, lon2):
 def zipToLatLon(yzipcode):
     # f = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + str(yzipcode))
     f = urllib.request.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + str(yzipcode))
-    j = json.loads(f.read())
+    # j = json.loads(f.read())
+    print(type(f))
+    j = json.loads(f.read().decode('utf-8'))
     yourlat = j['results'][0]['geometry']['location']['lat']
     yourlon = j['results'][0]['geometry']['location']['lng']
     return yourlat, yourlon
-   

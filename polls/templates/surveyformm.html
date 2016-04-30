@@ -7,13 +7,12 @@
           <h1>Welcome To Air Quality Performance</h1>
 
       <table>
-      {% for q in questions %}	    
+      {% for q in questions %}
         <tr>
           <th>{{ q }}</th>
         </tr>
       {% endfor %}
       </table>
-          <h2>Please enter your zipcode and check out the air quality performance in your area</h2>
           <div id="floating-panel" class="usa-grid">
             <form method="post">
             {% csrf_token %}
@@ -27,7 +26,7 @@
 
       </div>
     </section>
- 
+
 
   </header>
 
