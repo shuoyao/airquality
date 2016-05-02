@@ -1,6 +1,6 @@
 import csv
 # import urllib2
-import urllib
+import urllib.request
 import json
 from math import cos, asin, sqrt
 
@@ -57,5 +57,8 @@ def zipToLatLonState(yzipcode):
 
     yourlat = j['results'][0]['geometry']['location']['lat']
     yourlon = j['results'][0]['geometry']['location']['lng']
-    state = j['results'][0]['address_components'][3]["long_name"]
+    state = None
+    for entry in j['results'][0]['address_components']:
+        if "administrative_area_level_1" in entry["types"]:
+            state = entry["long_name"]
     return yourlat, yourlon, getStateData(state)
