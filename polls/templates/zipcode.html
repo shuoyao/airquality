@@ -39,16 +39,15 @@
   <script>
   var state_data = {{ state_data }};
   var site_data = {{ site_data }};
-  var comparator = "above";
   var message = "According to the measurements obtained from Environmental \
   Protection Agency air quality sensors, the air quality in your \
-  neighborhood was ~ average.  ".replace('~', comparator);
+  neighborhood was above average.  ";
 
   if (site_data < state_data) {
       message = message.concat("This means that you and your family may be \
                                exposed to more air pollution than average \
                                residents.");
-      comparator = "below";
+      message = message.replace('above', "below");
   }
 
   $('#message').text(message);
