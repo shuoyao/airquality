@@ -1,29 +1,45 @@
+{% load staticfiles %}
 <html>
   <head>
-    <title>Geocoding service</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Air Quality Survey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'polls/airQ.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </head>
 
-  <div class="jumbotron">
-    <h1>Air quality information</h1>      
-  </div>
+  <header role="banner">
+    <div class="performance-title">
+      An official website of air quality performance information
+    </div>
 
-<section class="homepage">
-  <div id="main-content">
-    <h2>This survey aims to understand how you think about fossil fuels and air quality. It will take approximately 5 to 10 minutes to complete this survey. You can exit the survey at any time. Please do not enter any personally identifying information such as your first name, your last name, or your street address. Non-identifying demographic data will be asked.</h2>
-  </div>
+    <section>
+      <div>
+        <div class="circle-active"><a></a></div>
+        <div class="circle"><a></a></div>
+        <div class="circle"><a></a></div>
+        <div class="circle"><a></a></div>
+        <div class="circle"><a></a></div>
+        <div class="circle"><a></a></div>
+      </div>
+    </section>
 
-</section>
+    <section class="homepage">
+      <div id="main-content">
+        <h2>
+            This survey aims to understand how you think about fossil fuels and
+            air quality. It will take approximately 5 to 10 minutes to complete
+            this survey. You can exit the survey at any time. Please do not
+            enter any personally identifying information such as your first
+            name, your last name, or your street address. Non-identifying
+            demographic data will be asked.
+        </h2>
+      </div>
+      <a href="{% url 'prob'%}"><input id="submit" type="button" value="Next"></a>
+    </section>
+
+
   </header>
-
-
-   <a button type="button" class="btn btn-primary btn-block" href="{% url 'prob'%}">Next</button></a>
-
-</div>
-
-
 </html>

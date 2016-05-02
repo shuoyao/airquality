@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Air Quality Survey</title>
+    <link rel="stylesheet" href="{% static 'polls/airQ.css' %}">
+  </head>
+
+  <header role="banner">
+  <div class="performance-title">
+    An official website of air quality performance information
+  </div>
+
+  <section>
+  <div>
+    <div class="circle"><a></a></div>
+    <div class="circle"><a></a></div>
+    <div class="circle"><a></a></div>
+    <div class="circle"><a></a></div>
+    <div class="circle"><a></a></div>
+    <div class="circle-active"><a></a></div>
+  </div>
+  </section>
+
+  <section class="homepage">
+    <div id="main-content">
+      <h2>
+        Your response has been recorded.<br>
+        Thank you for participating.
+      </h2>
+      {% if email %}
+      <br>
+      <h2>
+        You previously indicated that you were willing to send an e mail to your
+        congressional representative about policies around fossil fuels, please
+        personalize the following text and copy it. The following button will
+        redirect you to addditional information about your representative based
+        on your zipcode.
+      <h2>
+      <div style="background-color: #606060; color:white; width: 70%; margin-left: 10%; padding:20px;">
+        <h3>Dear representative,
+        <br><br>Burning fossil fuels is a leading cause of air pollution which
+        has been shown to have to negatively impact public health. I urge you to
+        take part in the formulation of new policies such as taxing fossil fuels
+        in order to oppose future pollution and protect the health of our nation.
+        <br><br>Best regards,</h3>
+      </div>
+      <a href="http://ziplook.house.gov/htbin/findrep?ZIP={{ zip }}&Submit=FIND+YOUR+REP+BY+ZIP">
+        <input id="submit" type="button" value="Find Representative">
+      </a>
+      {% endif %}
+    </div>
+  </section>
+  </header>
+
+</html>

@@ -9,13 +9,13 @@ class mcsv(models.Model):
     col2 = models.CharField(max_length=200)
     col3 = models.CharField(max_length=200)
 
-@python_2_unicode_compatible 
+@python_2_unicode_compatible
 class Survey(models.Model):
     question_text = models.CharField(max_length=200)
     def __str__(self):
         return self.question_text
 
-   
+
 @python_2_unicode_compatible
 class Response(models.Model):
     # question = models.ForeignKey(Survey, on_delete=models.CASCADE)
@@ -88,8 +88,6 @@ class Response(models.Model):
                               choices=POLITICS_CHOICES,
                               default=ONE)
     created = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return str(self.created)
-
-    

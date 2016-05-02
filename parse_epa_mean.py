@@ -15,9 +15,7 @@ def getStateAverageData(input_file, output_file, output_file2):
 		PM25_reader = csv.reader(csvfile, delimiter=',',
 								 skipinitialspace=True)
 		for reading in PM25_reader:
-			key = reading[0]
-			print("readings below")
-			print(reading)
+			key = reading[24]
 			key2 = (reading[5], reading[6])
 			try:
 				val = float(reading[19])

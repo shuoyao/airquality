@@ -1,87 +1,40 @@
 {% load staticfiles %}
 <html>
   <head>
-    <title>Geocoding service</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>Air Quality Survey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static "css/geocodestyle.css" %}"> 
-  </hea d>
+    <link rel="stylesheet" href="{% static 'polls/airQ.css' %}">
+  </head>
 
   <header role="banner">
   <div class="performance-title">
         An official website of air quality performance information
   </div>
 
-    <section class="usa-banner">
-      <div class="usa-grid">
-        <div class="usa-banner-content" id="main-content">
-          <h1>Welcome To Air Quality Performance</h1>
-          <h2>Please enter your zipcode and check out the air quality performance in your area</h2>
-          <div id="floating-panel" class="usa-grid">
-            <form method="post">
-            {% csrf_token %}
-            {{ form }}
-            <input id="submit" type="submit" value="Submit" />
-            </form>
-      </div>
-      <p id="output"></p>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Truncated_Bar_Graph.svg/2000px-Truncated_Bar_Graph.svg.png" style="width:1000px; height:500px;">
-        </div>
+  <section>
+    <div>
+      <div class="circle"><a></a></div>
+      <div class="circle"><a></a></div>
+      <div class="circle-active"><a></a></div>
+      <div class="circle"><a></a></div>
+      <div class="circle"><a></a></div>
+      <div class="circle"><a></a></div>
+    </div>
+  </section>
 
-      </div>
-    </section>
-
-    <section>
+  <section class="homepage">
+    <div id="main-content">
+      <h1>Please enter your zipcode to see your local area's air quality.</h1>
       <div>
-        <a class="red-button write-a-letter-button" href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=style%20css%20inline">Write a Letter</a>
-        <a class="red-button more-info-button" href="https://github.com/18F/web-design-standards/releases/download/v0.9.0/uswds-0.9.0.zip" onclick="ga('send', 'event', 'Downloaded framework', 'Clicked download button on homepage');">Get More Information</a>
+        <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input id="submit" type="submit" value="Submit" />
+        </form>
       </div>
-    </section>
-
- 
+    </div>
+  </section>
 
   </header>
-
-  <body>
-
-    <!-- Site navigation menu -->
-    <ul class="navbar">
-      <li><a href="index.html">Home page</a>
-      <li><a href="musings.html">Musings</a>
-      <li><a href="town.html">My town</a>
-      <li><a href="links.html">Links</a>
-    </ul>
-  </body>
 </html>
-<!--
-  //   <script async defer
-  //   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD8tHFDvOE5REy17jBFLB3CJm-wtPdoow&callback=initializeTransfer">
-  //   </script>
-
-  //   <script>
-  //     function initializeTransfer() {
-  //       var geocoder = new google.maps.Geocoder();
-  //       zipcodeSwitch(geocoder);
-  //       });
-    
-
-  //     function zipcodeSwitch(geocoder) {
-  //       var lat = '';
-  //       var lng = '';
-  //       var zipcode = document.getElementById('id_your_zipcode').value;
-
-  //       geocoder.geocode( { 'address': zipcode}, function(results, status) {
-  //         if (status == google.maps.GeocoderStatus.OK) {
-  //           //this is the latitude variable
-  //           // document.getElementById('id_your_lat').value = results[0].geometry.location.lat();
-  //           document.getElementById('id_your_lat').value = 1000;
-  //           //this is the longitude variable
-  //           // document.getElementById('id_your_lon').value = results[0].geometry.location.lng();
-  //           document.getElementById('id_your_lon').value = 2333;
-  //         } else {
-  //           alert("Geocode was not successful for the following reason: " + status);
-  //         }
-  //       });
-  //   }
-  </script>
-   -->

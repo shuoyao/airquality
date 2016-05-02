@@ -24,6 +24,19 @@ def mostRecentReading(lat, lon, input_file='station_avgs.csv'):
                 pass
         return closest_reading
 
+def getStateData(stateName, input_file='state_avgs.csv'):
+    stateName = ''.join(stateName.split()).lower()
+    with open(input_file, 'r') as csvfile:
+        state_avgs = csv.reader(csvfile, delimiter=',',
+                                 skipinitialspace=True)
+        for state_reading in state_avgs:
+            state = ''.join(state_reading[0].split()).lower()
+            if stateName == state:
+                # currently set to only return mean
+                # TODO: either use STD DEV info or get rid of it
+                return state_reading[1]
+    return
+
 def HaversineDistance(lat1, lon1, lat2, lon2):
     """Haversine formula to calculate distance adapated from:
     http://stackoverflow.com/a/21623206
@@ -35,12 +48,14 @@ def HaversineDistance(lat1, lon1, lat2, lon2):
 
 
 
-def zipToLatLon(yzipcode):
+def zipToLatLonState(yzipcode):
     # f = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + str(yzipcode))
-    f = urllib.request.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + str(yzipcode))
     # j = json.loads(f.read())
-    print(type(f))
+    # Python 3 compatability below, and Python 2 compatability above
+    f = urllib.request.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + str(yzipcode))
     j = json.loads(f.read().decode('utf-8'))
+
     yourlat = j['results'][0]['geometry']['location']['lat']
     yourlon = j['results'][0]['geometry']['location']['lng']
-    return yourlat, yourlon
+    state = j['results'][0]['address_components'][3]["long_name"]
+    return yourlat, yourlon, getStateData(state)
