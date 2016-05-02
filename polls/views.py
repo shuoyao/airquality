@@ -8,7 +8,7 @@ from .forms import NameForm, SurveyForm, ResponseForm
 from django.forms.widgets import HiddenInput
 
 def index(request):
-    return render(request, 'introduction.html')
+    return render(request, 'index.html')
 
 def zipcode(request):
     return render(request, 'zipcode.html')
