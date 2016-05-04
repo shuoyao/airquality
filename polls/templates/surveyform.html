@@ -1,2 +1,46 @@
-<h1>Survey question is: {{ qt}}</h1>
-<form method="POST">
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Air Quality Survey</title>
+    <link rel="stylesheet" href="{% static 'polls/airQ.css' %}">
+  </head>
+
+  <header role="banner">
+  <div class="performance-title">
+    An official website of air quality performance information
+  </div>
+
+  <section>
+  <div>
+    <div class="circle"><a></a></div>
+    <div class="circle"><a></a></div>
+    <div class="circle"><a></a></div>
+    <div class="circle"><a></a></div>
+    <div class="circle-active"><a></a></div>
+    <div class="circle"><a></a></div>
+  </div>
+  </section>
+
+  <section class="homepage">
+    <div id="main-content">
+
+      <div id=survey-questions>
+        <form method="post">
+          {% csrf_token %}
+          {{ rform }}
+          <input id="submit" type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+  </section>
+  </header>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+    {% for q in questions|slice:"1:" %}
+      $('#survey-questions > form > label:eq(' + {{ forloop.counter0 }} + ')').text(
+        "{{ q }}");
+    {% endfor %}
+  </script>
+
+</html>
